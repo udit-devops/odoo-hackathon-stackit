@@ -1,0 +1,28 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
+    <ActionBar title="AI Image Processor" />
+    
+    <ScrollView>
+        <StackLayout class="p-4 space-y-4">
+            <!-- Image Display -->
+            <GridLayout rows="auto, auto" columns="*, *" class="gap-4">
+                <Image row="0" col="0" src="{{ originalImage }}" class="w-full h-48 rounded-lg" stretch="aspectFill" />
+                <Image row="0" col="1" src="{{ processedImage }}" class="w-full h-48 rounded-lg" stretch="aspectFill" />
+                <Label row="1" col="0" text="Original" class="text-center" />
+                <Label row="1" col="1" text="Processed" class="text-center" />
+            </GridLayout>
+
+            <!-- Image Source Buttons -->
+            <GridLayout columns="*, *" class="gap-4">
+                <Button col="0" text="Take Photo" tap="{{ takePhoto }}" class="bg-blue-500 text-white rounded-lg p-4" />
+                <Button col="1" text="Pick Image" tap="{{ pickImage }}" class="bg-green-500 text-white rounded-lg p-4" />
+            </GridLayout>
+
+            <!-- Processing Buttons -->
+            <Button text="Enhance Background" tap="{{ enhanceBackground }}" class="bg-purple-500 text-white rounded-lg p-4" isEnabled="{{ !isProcessing }}" />
+            <Button text="Generate Avatar" tap="{{ generateAvatar }}" class="bg-indigo-500 text-white rounded-lg p-4" isEnabled="{{ !isProcessing }}" />
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator busy="{{ isProcessing }}" class="text-purple-500" />
+        </StackLayout>
+    </ScrollView>
+</Page>
